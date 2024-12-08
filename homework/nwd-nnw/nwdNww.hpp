@@ -17,6 +17,24 @@ int NWD(int lhs, int rhs) {
 }
 
 int NWW(int lhs, int rhs) {
-    // TODO: Implement me :)
-    return -1;
+    if (lhs == 0 || rhs == 0) {
+        return 0;
+    }
+
+    lhs = abs(lhs);
+    rhs = abs(rhs);
+    int result = lhs;
+    if (rhs > result) {
+        result = rhs;
+    }
+
+    int remainderOfDivision1 = result % rhs;
+    int remainderOfDivision2 = result % lhs;
+    while (remainderOfDivision1 != 0 || remainderOfDivision2 != 0) {
+        ++result;
+        remainderOfDivision1 = result % rhs;
+        remainderOfDivision2 = result % lhs;
+    }
+
+    return result;
 }
