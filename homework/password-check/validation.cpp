@@ -1,2 +1,17 @@
 #include "validation.hpp"
-// TODO: Put implementations here
+
+std::string getErrorMessage(const ErrorCode& errorCode) {
+    return "Ok";
+}
+
+bool doPasswordsMatch(const std::string& password, const std::string& repeatedPassword) {
+    return false;
+}
+
+ErrorCode checkPasswordRules(const std::string& password) {
+    return ErrorCode::Ok;
+}
+
+ErrorCode checkPassword(const std::string& password, const std::string& repeatedPassword) {
+    return ErrorCode::Ok;
+}
