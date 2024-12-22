@@ -20,7 +20,7 @@ std::string getErrorMessage(const ErrorCode& errorCode) {
 }
 
 bool doPasswordsMatch(const std::string& password, const std::string& repeatedPassword) {
-    return false;
+    return password == repeatedPassword;
 }
 
 ErrorCode checkPasswordRules(const std::string& password) {
