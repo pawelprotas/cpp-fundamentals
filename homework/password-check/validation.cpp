@@ -28,5 +28,9 @@ ErrorCode checkPasswordRules(const std::string& password) {
 }
 
 ErrorCode checkPassword(const std::string& password, const std::string& repeatedPassword) {
-    return ErrorCode::Ok;
+    if (!doPasswordsMatch(password, repeatedPassword)) {
+        return ErrorCode::PasswordsDoNotMatch;
+    }
+
+    return checkPasswordRules(password);
 }
