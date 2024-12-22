@@ -1,5 +1,7 @@
 #include "validation.hpp"
 
+#include <algorithm>
+
 std::string getErrorMessage(const ErrorCode& errorCode) {
     switch (errorCode) {
         case ErrorCode::Ok:
@@ -26,6 +28,10 @@ bool doPasswordsMatch(const std::string& password, const std::string& repeatedPa
 ErrorCode checkPasswordRules(const std::string& password) {
     if (password.size() < 9) {
         return ErrorCode::PasswordNeedsAtLeastNineCharacters;
+    }
+
+    if (!std::any_of(password.cbegin(), password.cend(), [](const char c) { return std::isdigit(c); })) {
+        return ErrorCode::PasswordNeedsAtLeastOneNumber;
     }
 
     return ErrorCode::Ok;
