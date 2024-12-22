@@ -34,6 +34,10 @@ ErrorCode checkPasswordRules(const std::string& password) {
         return ErrorCode::PasswordNeedsAtLeastOneNumber;
     }
 
+    if (!std::any_of(password.cbegin(), password.cend(), [](const char c) { return !std::isalnum(c); })) {
+        return ErrorCode::PasswordNeedsAtLeastOneSpecialCharacter;
+    }
+
     return ErrorCode::Ok;
 }
 
