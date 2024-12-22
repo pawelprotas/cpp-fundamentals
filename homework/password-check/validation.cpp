@@ -38,6 +38,10 @@ ErrorCode checkPasswordRules(const std::string& password) {
         return ErrorCode::PasswordNeedsAtLeastOneSpecialCharacter;
     }
 
+    if (!std::any_of(password.cbegin(), password.cend(), [](const char c) { return std::isupper(c); })) {
+        return ErrorCode::PasswordNeedsAtLeastOneUppercaseLetter;
+    }
+
     return ErrorCode::Ok;
 }
 
